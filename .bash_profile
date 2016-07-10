@@ -16,12 +16,13 @@ YELLOW="\[\e[33m\]"
 GREEN="\[\e[32m\]"
 CYAN="\[\e[36m\]"
 PURPLE="\[\e[35m\]"
+BOLD="\[\e[1m\]"
 RESET="\[\e[0m\]"
 NAME="vitez"
 
 source ~/.git-prompt.sh
 
-export PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$YELLOW\u $GREEN\w$CYAN > $RESET"
+export PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$YELLOW\u $GREEN\w$CYAN$BOLD > $RESET"
 
 # Turn on pretty colors
 export CLICOLOR=1
