@@ -2,6 +2,9 @@
 # Then, run this script (./config.sh)
 # Once it finishes, go to iterm preferences and set the theme to "vital"
 
+mv config/* .
+rm -rf config/
+
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
 
