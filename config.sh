@@ -17,6 +17,7 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/soyuka/tmux-current-pane-hostname ~/tmux
 
 vim +PluginInstall +qall
 
