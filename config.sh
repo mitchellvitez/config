@@ -2,6 +2,9 @@
 # Then, run this script (./config.sh)
 # Once it finishes, go to iterm preferences and set the theme to "vital"
 
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
+
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew install tmux
