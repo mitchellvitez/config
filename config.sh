@@ -17,6 +17,6 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 vim +PluginInstall +qall
 
+source .bash_profile
