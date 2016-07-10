@@ -2,9 +2,6 @@
 # Then, run this script (./config.sh)
 # Once it finishes, go to iterm preferences and set the theme to "vital"
 
-cd ~
-mv config/* .
-
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
 
@@ -17,5 +14,3 @@ brew install macvim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 vim +PluginInstall +qall
-
-rm -r config/
