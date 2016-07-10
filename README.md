@@ -9,7 +9,8 @@ Download and install [iterm2](https://www.iterm2.com/downloads.html)
 ```
 cd ~
 git clone https://github.com/mitchellvitez/config.git
-bash config/config.sh
+mv config/* .
+bash config.sh
 ```
 
 Set iterm theme (preferences > profiles > colors) to "vital"
