@@ -39,11 +39,6 @@ export EDITOR="$VISUAL"
 
 alias ag='ag --smart-case'
 
-function vb() {
-    CMD="cd /vagrant; bundle exec $@";
-        vagrant ssh -c "$CMD"
-}
-
 function v() {
     CMD="cd /vagrant; $@";
         vagrant ssh -c "$CMD"
@@ -52,11 +47,13 @@ function v() {
 source ~/.git-completion.bash
 
 if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 alias update='git checkout master; git pull; v bundle install; v npm install; v rake db:migrate RAILS_ENV=test'
 
-alias vim='mvim -v'
+if [ "$(uname)" == "Darwin" ]; then
+  alias vim='mvim -v'
+fi
 
 tmux source-file ~/.tmux.conf
