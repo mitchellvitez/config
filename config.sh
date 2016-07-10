@@ -21,3 +21,4 @@ git clone https://github.com/soyuka/tmux-current-pane-hostname ~/tmux
 
 vim +PluginInstall +qall
 
+source .bash_profile
