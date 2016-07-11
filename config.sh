@@ -15,10 +15,13 @@ if [ "$(uname)" == "Darwin" ]; then
   brew install tmux
   brew install ag
   brew install macvim
+  brew install fzf
 fi
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/soyuka/tmux-current-pane-hostname ~/tmux
+
+/usr/local/opt/fzf/install
 
 vim +PluginInstall +qall
 

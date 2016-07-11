@@ -11,6 +11,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'shemerey/vim-peepopen'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'junegunn/fzf'
 
 call vundle#end()
 
