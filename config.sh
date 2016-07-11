@@ -2,6 +2,7 @@
 # Then, run this script (./config.sh)
 # Once it finishes, go to iterm preferences and set the theme to "vital"
 
+cd ~
 mv config/* .
 rm -rf config/
 
@@ -21,4 +22,5 @@ git clone https://github.com/soyuka/tmux-current-pane-hostname ~/tmux
 
 vim +PluginInstall +qall
 
-source .bash_profile
+source ~/.bash_profile
+
