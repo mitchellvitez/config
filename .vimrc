@@ -38,6 +38,8 @@ set incsearch
 set backspace=indent,eol,start
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set background=dark
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 autocmd BufNewFile,BufRead *.cjsx set syntax=javascript
 autocmd BufNewFile,BufRead *.coffee set syntax=javascript
@@ -71,3 +73,6 @@ command W w
 command Q q
 
 nnoremap ; :
+
+map <leader>f :FZF<C-m>
+map <leader>a :Ag 
