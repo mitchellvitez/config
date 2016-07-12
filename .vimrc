@@ -5,19 +5,20 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'shemerey/vim-peepopen'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'junegunn/fzf'
+Plugin 'vim-airline/vim-airline'
 
 call vundle#end()
 
 filetype plugin indent on
 syntax on
 
+set encoding=utf-8
 set ttyfast
 set mouse=a
 set ttymouse=xterm2
@@ -38,8 +39,9 @@ set incsearch
 set backspace=indent,eol,start
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set background=dark
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 autocmd BufNewFile,BufRead *.cjsx set syntax=javascript
 autocmd BufNewFile,BufRead *.coffee set syntax=javascript

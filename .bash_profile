@@ -19,18 +19,13 @@ PURPLE="\[\e[35m\]"
 RED="\[\e[31m\]"
 BOLD="\[\e[1m\]"
 RESET="\[\e[0m\]"
+STATUS="$GREEN"
 
-function statuscolor() {
-  if [ "$?" == "0" ]; then
-    echo $GREEN;
-  else
-    echo $RED;
-  fi
-}
+PROMPT_COMMAND='if [ $? = 0 ]; then STATUS="$GREEN"; else STATUS="$RED"; fi; PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$STATUS\u $YELLOW\w$CYAN$BOLD > $RESET"'
 
 source ~/.git-prompt.sh
 
-export PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$(statuscolor)\u $YELLOW\w$CYAN$BOLD > $RESET"
+export PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$GREEN\u $YELLOW\w$CYAN$BOLD > $RESET"
 
 # Turn on pretty colors
 export CLICOLOR=1
