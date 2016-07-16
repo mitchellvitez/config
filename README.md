@@ -4,7 +4,7 @@ For various dotfiles, installation scripts, and other setup I might want to do
 
 ## Installation
 
-Download and install [iterm2](https://www.iterm2.com/downloads.html)
+Download and install [iterm2](https://www.iterm2.com/downloads.html) on a mac, or [cygwin](https://www.cygwin.com/) on windows
 
 ```
 cd ~
@@ -12,11 +12,13 @@ git clone https://github.com/mitchellvitez/config.git
 bash config/config.sh
 ```
 
-Set iterm theme (preferences > profiles > colors) to "vital"
+If on a mac, set iterm theme (preferences > profiles > colors) to "vital"
 
 ## Notes
 
 The setup script was written for a mac setup with iterm2. It should work tolerably well on linux / cygwin, but isn't optimized for those cases.
+
+If you're using a different itermcolors file and want to standardize with cygwin, check out [.itermcolors to ANSI](https://github.com/mitchellvitez/iterm-to-ansi-colors)
 
 ## Usage
 
