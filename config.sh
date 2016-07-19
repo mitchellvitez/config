@@ -14,7 +14,8 @@ if [ "$(uname)" == "Darwin" ]; then
 
   brew install tmux
   brew install ag
-  brew install macvim
+  brew install macvim --with-cscope --with-lua
+  brew linkapps macvim
   brew install fzf
 fi
 
