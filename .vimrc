@@ -73,12 +73,13 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 
+let g:gitgutter_sign_column_always = 1
 let g:gitgutter_realtime = 1
 set updatetime=250
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
