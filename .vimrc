@@ -13,6 +13,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'junegunn/fzf'
 Plugin 'vim-airline/vim-airline'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 
@@ -69,6 +72,20 @@ ca Ag Ag!
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
+
+let g:gitgutter_realtime = 1
+set updatetime=250
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+nnoremap <Leader>l :SyntasticCheck<CR>
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_error_symbol = '❌'
+highlight link SyntasticErrorSign SignColumn
 
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
