@@ -16,11 +16,13 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 
 filetype plugin indent on
 syntax on
+" colorscheme vital
 
 set encoding=utf-8
 set ttyfast
@@ -64,7 +66,6 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 highlight LineNr ctermfg=darkgrey
-highlight LineNr guibg=darkgrey
 
 ca ag Ag!
 ca Ag Ag!
@@ -75,6 +76,12 @@ let g:NERDDefaultAlign = 'left'
 
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_realtime = 1
+let g:gitgutter_sign_added = '+'
+" let g:gitgutter_sign_modified = 'yy'
+" let g:gitgutter_sign_removed = 'zz'
+" let g:gitgutter_sign_removed_first_line = '^^'
+" let g:gitgutter_sign_modified_removed = 'ww'
+
 set updatetime=250
 
 let g:syntastic_always_populate_loc_list = 1
@@ -84,9 +91,13 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
 nnoremap <Leader>l :SyntasticCheck<CR>
+nnoremap <Leader>lr :SyntasticReset<CR>
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_error_symbol = '❌'
 highlight link SyntasticErrorSign SignColumn
+
+
+nnoremap <Leader>g :GitGutterToggle<CR>
 
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
