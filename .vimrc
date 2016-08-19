@@ -17,6 +17,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 
@@ -166,3 +167,13 @@ nnoremap ; :
 
 map <leader>f :FZF<C-m>
 map <leader>a :Ag 
+
+" Pressing F10 shows the current syntax group to know which highlight colors to change
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),2),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Ruby syntax highlighting
+highlight rubyString ctermfg=Green
+highlight rubyInterpolationDelimiter ctermfg=29
+highlight rubyInterpolation ctermfg=LightGreen
+
+highlight rubyConstant ctermfg=Red
