@@ -12,7 +12,7 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'junegunn/fzf'
 Plugin 'vim-airline/vim-airline'
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
@@ -78,10 +78,6 @@ let g:NERDDefaultAlign = 'left'
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_realtime = 1
 let g:gitgutter_sign_added = '+'
-" let g:gitgutter_sign_modified = 'yy'
-" let g:gitgutter_sign_removed = 'zz'
-" let g:gitgutter_sign_removed_first_line = '^^'
-" let g:gitgutter_sign_modified_removed = 'ww'
 
 set updatetime=250
 
