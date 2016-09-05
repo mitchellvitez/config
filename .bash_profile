@@ -7,7 +7,6 @@ alias tmux='tmux -2'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 function syncdate () { sudo service ntp stop && sudo ntpdate ntp.ubuntu.com && sudo service ntp start ; }
-cd /vagrant/
 export DISPLAY=localhost:10.0
 
 # Set prompt colors and format

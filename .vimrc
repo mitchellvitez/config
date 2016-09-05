@@ -18,6 +18,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-dispatch'
+Plugin 'OmniSharp/Omnisharp-vim'
 
 call vundle#end()
 
