@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'shemerey/vim-peepopen'
@@ -21,6 +22,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'OmniSharp/Omnisharp-vim'
+Plugin 'alvan/vim-closetag'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'ElmCast/elm-vim'
 
 call vundle#end()
 
@@ -47,7 +51,7 @@ set hidden
 set autoindent
 set incsearch
 set backspace=indent,eol,start
-set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 set background=dark
 
 let g:airline_left_sep=''
@@ -93,9 +97,10 @@ let g:syntastic_auto_loc_list = 0
 nnoremap <Leader>l :SyntasticCheck<CR>
 nnoremap <Leader>lr :SyntasticReset<CR>
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_error_symbol = '❌'
-highlight link SyntasticErrorSign SignColumn
+let g:syntastic_error_symbol = 'XX'
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 nnoremap <Leader>g :GitGutterToggle<CR>
 
@@ -104,60 +109,11 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-"""" neocomplete settings """"
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-"""""""
-
 nnoremap <leader>c :call NERDComment(0,"toggle")<C-m>
+
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
 
 command W w
 command Q q
@@ -174,5 +130,5 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),2),"name") . '> trans
 highlight rubyString ctermfg=Green
 highlight rubyInterpolationDelimiter ctermfg=29
 highlight rubyInterpolation ctermfg=LightGreen
-
 highlight rubyConstant ctermfg=Red
+
