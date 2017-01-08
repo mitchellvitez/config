@@ -54,6 +54,9 @@ set backspace=indent,eol,start
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 set background=dark
 
+set wildmode=longest,list,full
+set wildmenu
+
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -67,16 +70,10 @@ let mapleader=','
 inoremap jk <Esc>
 inoremap kj <Esc>
 
-set wildmode=longest,list,full
-set wildmenu
-
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 highlight LineNr ctermfg=darkgrey
-
-ca ag Ag!
-ca Ag Ag!
 
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -85,6 +82,7 @@ let g:NERDDefaultAlign = 'left'
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_realtime = 1
 let g:gitgutter_sign_added = '+'
+nnoremap <Leader>g :GitGutterToggle<CR>
 
 set updatetime=250
 
@@ -100,10 +98,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_error_symbol = 'XX'
 let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
-
-nnoremap <Leader>g :GitGutterToggle<CR>
-
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -111,14 +105,14 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 nnoremap <leader>c :call NERDComment(0,"toggle")<C-m>
 
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
+let g:ycm_semantic_triggers = {'haskell' : ['.'], 'elm' : ['.']}
 
+" Ignore shift key on common commands
 command W w
 command Q q
-
 nnoremap ; :
+ca ag Ag!
+ca Ag Ag!
 
 map <leader>f :FZF<C-m>
 map <leader>a :Ag 
@@ -131,4 +125,3 @@ highlight rubyString ctermfg=Green
 highlight rubyInterpolationDelimiter ctermfg=29
 highlight rubyInterpolation ctermfg=LightGreen
 highlight rubyConstant ctermfg=Red
-
