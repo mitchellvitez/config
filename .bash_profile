@@ -72,3 +72,5 @@ man() {
 }
 
 tmux source-file ~/.tmux.conf
+tmux
+clear
