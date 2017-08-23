@@ -42,12 +42,12 @@ Common command keys are case insensitive (<kbd>W</kbd>, <kbd>Q</kbd>)
 
 ### Tmux
 
-The leader shortcut here is <kbd>ctrl</kbd><kbd>a</kbd>
+The leader shortcut here is <kbd>ctrl</kbd><kbd>w</kbd>
 
-Vertical split <kbd>ctrl</kbd><kbd>a</kbd> <kbd>|</kbd>
+Vertical split <kbd>ctrl</kbd><kbd>w</kbd> <kbd>|</kbd>
 
-Horizontal split <kbd>ctrl</kbd><kbd>a</kbd> <kbd>-</kbd>
+Horizontal split <kbd>ctrl</kbd><kbd>w</kbd> <kbd>-</kbd>
 
-Reload `~/.tmux.conf` <kbd>ctrl</kbd><kbd>a</kbd> <kbd>r</kbd>
+Reload `~/.tmux.conf` <kbd>ctrl</kbd><kbd>w</kbd> <kbd>r</kbd>
 
-Movement between panes uses Vim mappings (Left is <kbd>ctrl</kbd><kbd>a</kbd> <kbd>h</kbd>, down is <kbd>ctrl</kbd><kbd>a</kbd> <kbd>j</kbd> etc.)
+Movement between panes uses Vim mappings (Left is <kbd>ctrl</kbd><kbd>w</kbd> <kbd>h</kbd>, down is <kbd>ctrl</kbd><kbd>w</kbd> <kbd>j</kbd> etc.)
