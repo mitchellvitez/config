@@ -20,7 +20,7 @@ BOLD="\[\e[1m\]"
 RESET="\[\e[0m\]"
 STATUS="$GREEN"
 
-PROMPT_COMMAND='if [ $? = 0 ]; then STATUS="$GREEN"; else STATUS="$RED"; fi; PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$STATUS\u $YELLOW\w$CYAN$BOLD > $RESET"'
+PROMPT_COMMAND='if [ $? = 0 ]; then STATUS="$GREEN"; else STATUS="$RED"; fi; PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$STATUS\u $YELLOW\w$CYAN$BOLD λ $RESET"'
 
 source ~/.git-prompt.sh
 
@@ -32,6 +32,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 alias ls='ls -Gah'
+alias beep="echo -ne '\007'"
 
 # Make ri use pretty colors
 export RI="-f ansi"
@@ -40,7 +41,11 @@ export LESS="-R"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-alias ag='ag --smart-case'
+alias ag='ag --smart-case --ignore elm-stuff/'
+
+alias du='du -h'
+
+alias gpoh='git push origin HEAD'
 
 function v() {
     CMD="cd /vagrant; $@";
@@ -59,6 +64,11 @@ if [ "$(uname)" == "Darwin" ]; then
   alias vim='mvim -v'
 fi
 
+alias top='top -o cpu'
+
+alias python='python3'
+alias pip='pip3'
+
 man() {
     env \
         LESS_TERMCAP_mb=$(printf "\e[1;31m") \
@@ -71,6 +81,15 @@ man() {
             man "$@"
 }
 
-tmux source-file ~/.tmux.conf
-tmux
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+export ANDROID_HOME=/Users/mitchellvitez/Library/Android/sdk
+
+tmux source-file ~/.tmux.conf > /dev/null
+tmux > /dev/null
+
+clear
+clear
 clear
