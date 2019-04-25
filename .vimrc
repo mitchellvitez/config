@@ -32,7 +32,7 @@ Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'osyo-manga/vim-over'
-Plugin 'munshkr/vim-tidal'
+Plugin 'tidalcycles/vim-tidal'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'ervandew/supertab'
@@ -43,6 +43,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fireplace'
 Plugin 'Twinside/vim-hoogle'
 Plugin 'w0rp/ale'
+Plugin 'hdima/python-syntax'
+Plugin 'junegunn/rainbow_parentheses.vim'
 
 call vundle#end()
 
@@ -54,7 +56,7 @@ set ttyfast
 set mouse=a
 set ttymouse=xterm2
 set number
-set clipboard=unnamedplus
+set clipboard=unnamed
 set laststatus=2
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set title
@@ -74,6 +76,10 @@ set background=dark
 autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 autocmd FileType c set tabstop=4 shiftwidth=4 softtabstop=0 noexpandtab
 autocmd FileType h set tabstop=4 shiftwidth=4 softtabstop=0 noexpandtab
+
+augroup filetypedetect
+    au BufRead,BufNewFile *.pxl set filetype=pixll
+augroup END
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -138,14 +144,13 @@ let g:syntastic_python_flake8_args = ['-m', 'flake8', '--ignore=E501,E225,E302,E
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 " let g:syntastic_debug=1
 
-let g:ale_linters = {'haskell': ['stack-build', 'hlint', 'ghc', 'brittany']}
+let g:ale_linters = {'haskell': ['ghc_mod', 'stack-build', 'hlint', 'ghc', 'brittany']}
 let g:ale_haskell_ghc_options = '-fno-code -v0 -XOverloadedStrings'
 let g:ale_haskell_stack_ghc_options = '-fno-code -v0 -XOverloadedStrings -XLambdaCase -XMultiWayIf -XGADTs -XPatternGuards -XViewPatterns -XRecursiveDo -XTupleSections -XExplicitForAll -XImplicitParams -XQuasiQuotes -XTemplateHaskell -XBangPatterns'
 " let g:ale_lint_delay = 1000
 hi ALEWarning ctermbg=94
 
 let g:ycm_semantic_triggers = {'haskell' : ['.'], 'elm': ['.']}
-
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.tpl"
 
 nnoremap <Leader>g :GitGutterToggle<CR>
@@ -156,7 +161,7 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-map <leader>t :YcmCompleter GoToImprecise<CR>
+" map <leader>t :YcmCompleter GoToImprecise<CR>
 
 nnoremap <leader>c :Commentary<C-m>
 vnoremap <leader>c :Commentary<C-m>
@@ -173,8 +178,9 @@ map <leader>h :Hoogle
 map <silent> tw :GhcModTypeInsert<CR>
 map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
+map <leader> t :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
-map <leader>t :GhcModCheckAndLint<CR>
+" map <leader>t :GhcModCheckAndLint<CR>
 " autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 " autocmd BufWritePost *.hs call s:check_and_lint()
 " function! s:check_and_lint()
@@ -189,12 +195,29 @@ map <leader>t :GhcModCheckAndLint<CR>
 "     echo len(l:qflist) . " lines of warnings found by GHC mod. Type ,t to examine"
 "   endif
 " endfunction
-" let g:necoghc_enable_detailed_browse = 1
+let g:necoghc_enable_detailed_browse = 1
 
 " Pressing F10 shows the current syntax group to know which highlight colors to change
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),2),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 highlight Comment ctermfg=215
+
+" Python syntax highlighting
+let python_highlight_all = 1
+highlight pythonNumber ctermfg=Magenta
+highlight pythonString ctermfg=Green
+highlight pythonBuiltinFunc cterm=Bold ctermfg=Cyan
+highlight Entity cterm=Bold ctermfg=LightBlue
+highlight pythonBuiltInObj ctermfg=LightGreen
+highlight pythonExClass ctermfg=Red
+highlight pythonParamName ctermfg=LightMagenta
+highlight pythonPreCondit ctermfg=Blue
+
+augroup markdownSpell
+    autocmd!
+    autocmd FileType markdown setlocal spell
+    autocmd BufRead,BufNewFile *.md setlocal spell
+augroup END
 
 " Ruby syntax highlighting
 highlight rubyString ctermfg=Green
@@ -245,3 +268,4 @@ vmap a- :Tabularize /-><CR>
 vmap a, :Tabularize /,<CR>
 " vmap a| :Tabularize /|<CR>
 
+command Days r ~/.vim/other/days.txt
