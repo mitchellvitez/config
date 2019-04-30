@@ -9,6 +9,10 @@ alias tmux='tmux -2'
 function syncdate () { sudo service ntp stop && sudo ntpdate ntp.ubuntu.com && sudo service ntp start ; }
 export DISPLAY=localhost:10.0
 
+function pycheck () {
+  pycodestyle $1 && pydocstyle $1;
+}
+
 # Set prompt colors and format
 BLUE="\[\e[34m\]"
 YELLOW="\[\e[33m\]"
@@ -33,17 +37,29 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 alias ls='ls -Gah'
 alias beep="echo -ne '\007'"
+alias qemu="qemu-system-x86_64"
 
 # Make ri use pretty colors
 export RI="-f ansi"
 export LESS="-R"
+
+export LD_LIBRARY_PATH=""
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
 alias ag='ag --smart-case --ignore elm-stuff/'
 
+alias fzf="fzf --bind 'enter:execute(mvim -v -f {})+abort'"
+
 alias du='du -h'
+
+alias ghcorig='ghc'
+alias ghc='ghc -O2 -Wall -freverse-errors'
+alias ghci='ghci -freverse-errors'
+
+ghct() { ghc -O2 -Wall -freverse-errors -optc-O3 -fno-warn-missing-signatures -fno-warn-name-shadowing -fno-warn-unused-do-bind $1 && time ./$1; }
+ghcx() { ghc -O2 -Wall -freverse-errors -optc-O3 -fno-warn-missing-signatures -fno-warn-name-shadowing -fno-warn-unused-do-bind $1 && ./$1; }
 
 alias gpoh='git push origin HEAD'
 
@@ -65,6 +81,7 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 alias top='top -o cpu'
+alias killpython="sudo kill $(ps -A | grep python | awk '{print $1}')"
 
 alias python='python3'
 alias pip='pip3'
@@ -84,9 +101,10 @@ man() {
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH=$(brew --prefix openssl)/bin:$PATH
 
 export ANDROID_HOME=/Users/mitchellvitez/Library/Android/sdk
-
 tmux source-file ~/.tmux.conf > /dev/null
 tmux > /dev/null
 
