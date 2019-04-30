@@ -77,15 +77,15 @@ set wildmenu
 
 """ IMPORTANT
 
-" 40000^100000
-let mapleader=','
-
 " easy escaping
 inoremap jk <Esc>
 inoremap kj <Esc>
 
 
 """ LEADER SHORTCUTS
+
+" 40000^100000
+let mapleader=','
 
 " close little windows that get in the way
 map <leader>q :cclose<bar>:HoogleClose<CR>
@@ -289,5 +289,5 @@ function! PostGen()
   execute 'normal dd Go'
 endfunction
 
-" wrap 'example' as '<img src=/images//example.jpg" width="100%">'
+" wrap 'example' as '<img src="/images//example.jpg" width="100%">'
 command Image execute "normal 0i<img src=\"/images//\<esc>A.jpg\" width=\"100%\">\<esc>0f/f/f/"
