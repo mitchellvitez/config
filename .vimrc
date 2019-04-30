@@ -102,8 +102,8 @@ map <leader>h :Hoogle
 " toggle the git gutter (duh)
 nnoremap <Leader>g :GitGutterToggle<CR>
 
-" colorpicker
-map <leader>cp :VCoolor<CR>
+" heX color picker
+map <leader>x :VCoolor<CR>
 
 " syntax checking
 map <Leader>s :SyntasticToggleMode<CR>
