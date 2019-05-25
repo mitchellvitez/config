@@ -1,3 +1,4 @@
+set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,7 +24,7 @@ Plugin 'alvan/vim-closetag'
 Plugin 'eagletmt/neco-ghc'
 Plugin 'ElmCast/elm-vim'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
-Plugin 'KabbAmine/vCoolor.vim'	
+Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'osyo-manga/vim-over'
@@ -42,6 +43,9 @@ Plugin 'hdima/python-syntax'
 Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'slim-template/vim-slim'
+Plugin 'vim-scripts/dbext.vim'
+Plugin 'ntpeters/vim-better-whitespace'
 
 call vundle#end()
 
@@ -88,7 +92,7 @@ inoremap kj <Esc>
 let mapleader=','
 
 " close little windows that get in the way
-map <leader>q :cclose<bar>:HoogleClose<CR>
+map <leader>q :cclose<bar>:DBResultsClose<CR>i<Esc>
 
 " comment stuff out
 nnoremap <leader>c :Commentary<C-m>
@@ -96,7 +100,7 @@ vnoremap <leader>c :Commentary<C-m>
 
 " fast searching for files, strings in directory, and type signatures
 map <leader>f :FZF<C-m>
-map <leader>a :Ag 
+map <leader>a :Ag
 map <leader>h :Hoogle
 
 " toggle the git gutter (duh)
@@ -104,9 +108,6 @@ nnoremap <Leader>g :GitGutterToggle<CR>
 
 " heX color picker
 map <leader>x :VCoolor<CR>
-
-" syntax checking
-map <Leader>s :SyntasticToggleMode<CR>
 
 " browse the undo tree
 nnoremap <leader>u :GundoToggle<CR>
@@ -190,6 +191,7 @@ autocmd BufNewFile,BufRead *.coffee set syntax=javascript
 " make airline minimalist
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+
 " multiline stuff
 cabbrev %s OverCommandLine<cr>s
 cabbrev '<,'>s OverCommandLine<cr>'<,'>s
@@ -210,9 +212,11 @@ let g:gitgutter_realtime = 1
 let g:gitgutter_sign_added = '+'
 
 " linting
+let g:ale_sign_column_always = 1
 let g:ale_linters =
   \ { 'haskell': ['ghc_mod', 'stack-build', 'hlint', 'ghc', 'brittany']
   \ , 'python': ['pylint', 'pycodestyle', 'pydocstyle', 'flake8']
+  \ , 'ruby': ['rubocop', 'ruby', 'rails_best_practices']
   \ }
 let g:ale_haskell_ghc_options = '-fno-code -v0 -XOverloadedStrings'
 let g:ale_haskell_stack_ghc_options = '-fno-code -v0 -XOverloadedStrings -XLambdaCase -XMultiWayIf -XGADTs -XPatternGuards -XViewPatterns -XRecursiveDo -XTupleSections -XExplicitForAll -XImplicitParams -XQuasiQuotes -XTemplateHaskell -XBangPatterns'
@@ -291,3 +295,8 @@ endfunction
 
 " wrap 'example' as '<img src="/images//example.jpg" width="100%">'
 command Image execute "normal 0i<img src=\"/images//\<esc>A.jpg\" width=\"100%\">\<esc>0f/f/f/"
+
+" sql stuff
+" let g:dbext_default_profile_psql = 'type=PGSQL:dbname=?:host=localhost:port=5432:user=?' " fill in the ?
+" let g:dbext_default_profile_redshift = 'type=PGSQL:dbname=?:host=?:port=5439:user=?' " fill in the ?
+" let g:dbext_default_profile = 'redshift'
