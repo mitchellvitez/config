@@ -37,4 +37,5 @@ git clone https://github.com/tmux-plugins/tmux-resurrect ~/tmux/resurrect
 
 vim +PluginInstall +qall
 rm -rf ~/.git/
+rm README.md
 source ~/.bash_profile
