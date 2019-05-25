@@ -1,11 +1,13 @@
 source ~/.bashrc
+source ~/.secrets
 
-TERM=xterm-256color
+export TERM=xterm-256color
 alias tmux='tmux -2'
 
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+HISTCONTROL=ignoreboth
+
 function syncdate () { sudo service ntp stop && sudo ntpdate ntp.ubuntu.com && sudo service ntp start ; }
 export DISPLAY=localhost:10.0
 
@@ -28,11 +30,19 @@ PROMPT_COMMAND='if [ $? = 0 ]; then STATUS="$GREEN"; else STATUS="$RED"; fi; PS1
 
 source ~/.git-prompt.sh
 
+alias gcm='git checkout master'
+alias gd1='git diff HEAD~1 HEAD'
+alias gd2='git diff HEAD~2 HEAD'
+alias gd3='git diff HEAD~3 HEAD'
+alias gdm='git diff master...HEAD'
+alias gb='git branch'
+
+alias be='bundle exec'
+
 export PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$GREEN\u $YELLOW\w$CYAN$BOLD > $RESET"
 
 # Turn on pretty colors
 export CLICOLOR=1
-
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 alias ls='ls -Gah'
@@ -48,11 +58,13 @@ export LD_LIBRARY_PATH=""
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-alias ag='ag --smart-case --ignore elm-stuff/'
+alias a='ag --smart-case'
+alias ag='ag --smart-case'
 
-alias fzf="fzf --bind 'enter:execute(mvim -v -f {})+abort'"
+alias f="fzf --bind 'enter:execute(vim -v -f {}; echo {})+abort'"
+alias fzf="fzf --bind 'enter:execute(vim -v -f {}; echo {})+abort'"
 
-alias du='du -h'
+alias du='du -h --max-depth=1'
 
 alias ghcorig='ghc'
 alias ghc='ghc -O2 -Wall -freverse-errors'
@@ -64,8 +76,8 @@ ghcx() { ghc -O2 -Wall -freverse-errors -optc-O3 -fno-warn-missing-signatures -f
 alias gpoh='git push origin HEAD'
 
 function v() {
-    CMD="cd /vagrant; $@";
-        vagrant ssh -c "$CMD"
+  CMD="cd /vagrant; $@";
+  vagrant ssh -c "$CMD"
 }
 
 source ~/.git-completion.bash
@@ -80,29 +92,31 @@ if [ "$(uname)" == "Darwin" ]; then
   alias vim='mvim -v'
 fi
 
-alias top='top -o cpu'
+alias top='top -o %CPU'
 alias killpython="sudo kill $(ps -A | grep python | awk '{print $1}')"
 
 alias python='python3'
 alias pip='pip3'
 
+alias bp='vim ~/.bash_profile'
+alias sbp='source ~/.bash_profile'
+
 man() {
-    env \
-        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-        LESS_TERMCAP_md=$(printf "\e[1;36m") \
-        LESS_TERMCAP_me=$(printf "\e[0m") \
-        LESS_TERMCAP_se=$(printf "\e[0m") \
-        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-        LESS_TERMCAP_ue=$(printf "\e[0m") \
-        LESS_TERMCAP_us=$(printf "\e[1;32m") \
-            man "$@"
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;36m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
 }
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH=$(brew --prefix openssl)/bin:$PATH
 
 export ANDROID_HOME=/Users/mitchellvitez/Library/Android/sdk
 tmux source-file ~/.tmux.conf > /dev/null
