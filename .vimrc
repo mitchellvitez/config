@@ -46,6 +46,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'slim-template/vim-slim'
 Plugin 'vim-scripts/dbext.vim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 
@@ -78,6 +79,7 @@ set updatetime=250
 set runtimepath^=~/.vim/bundle/ag
 set wildmode=longest,list,full
 set wildmenu
+set nomodeline
 
 """ IMPORTANT
 
@@ -102,6 +104,9 @@ vnoremap <leader>c :Commentary<C-m>
 map <leader>f :FZF<C-m>
 map <leader>a :Ag
 map <leader>h :Hoogle
+
+" show tag bar
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 " toggle the git gutter (duh)
 nnoremap <Leader>g :GitGutterToggle<CR>
@@ -187,6 +192,9 @@ augroup filetypedetect
 augroup END
 autocmd BufNewFile,BufRead *.cjsx set syntax=javascript
 autocmd BufNewFile,BufRead *.coffee set syntax=javascript
+
+" jump to tag if only one, else show list
+nnoremap <C-]> g<C-]>
 
 " make airline minimalist
 let g:airline_left_sep=''
