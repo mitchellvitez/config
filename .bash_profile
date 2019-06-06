@@ -36,8 +36,16 @@ alias gd2='git diff HEAD~2 HEAD'
 alias gd3='git diff HEAD~3 HEAD'
 alias gdm='git diff master...HEAD'
 alias gb='git branch'
+alias gd='git diff'
+alias gs='git status'
+alias gl='git log --graph --decorate --abbrev-commit'
+
+alias tags='ctags -R -f ./.git/tags --exclude=.git --exclude=log --exclude=elm-stuff --exclude=node_modules .'
 
 alias be='bundle exec'
+alias bi='bundle install'
+alias cons='bundle exec rails c'
+alias spec='bundle exec rspec'
 
 export PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$GREEN\u $YELLOW\w$CYAN$BOLD > $RESET"
 
