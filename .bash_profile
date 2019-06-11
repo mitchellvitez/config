@@ -66,15 +66,13 @@ export LD_LIBRARY_PATH=""
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-alias a='ag --smart-case'
-alias ag='ag --smart-case'
+alias ag='ag --smart-case --color-match=33 --color-line-number=34'
 
-alias f="fzf --bind 'enter:execute(vim -v -f {}; echo {})+abort'"
 alias fzf="fzf --bind 'enter:execute(vim -v -f {}; echo {})+abort'"
+alias f=fzf
 
 alias du='du -h --max-depth=1'
 
-alias ghcorig='ghc'
 alias ghc='ghc -O2 -Wall -freverse-errors'
 alias ghci='ghci -freverse-errors'
 
