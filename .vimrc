@@ -67,8 +67,8 @@ set titleold=""
 set titlestring=\ %f
 set ignorecase
 set smartcase
-set t_ts=]1;
-set t_fs=
+" set t_ts=]1;
+" set t_fs=
 set hidden
 set autoindent
 set incsearch
@@ -110,6 +110,9 @@ nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 " toggle the git gutter (duh)
 nnoremap <Leader>g :GitGutterToggle<CR>
+
+" insert today's date
+nnoremap <leader> d :Date<C-m>
 
 " heX color picker
 map <leader>x :VCoolor<CR>
@@ -300,6 +303,9 @@ function! PostGen()
   call append('.', "<!---")
   execute 'normal dd Go'
 endfunction
+
+" insert today's date
+command Date execute "normal i" . strftime('%Y-%m-%d')
 
 " wrap 'example' as '<img src="/images//example.jpg" width="100%">'
 command Image execute "normal 0i<img src=\"/images//\<esc>A.jpg\" width=\"100%\">\<esc>0f/f/f/"
