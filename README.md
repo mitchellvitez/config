@@ -9,7 +9,9 @@ Download and install [iterm2](https://www.iterm2.com/downloads.html) on a mac, o
 ```
 cd ~
 git clone https://github.com/mitchellvitez/config.git
-bash config/config.sh
+mv config/* .
+mv config/.* .
+bash config.sh
 ```
 
 If on a mac, set iterm theme (preferences > profiles > colors) to "vital"
