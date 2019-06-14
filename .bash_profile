@@ -53,7 +53,7 @@ export PS1="$BLUE\d \@$PURPLE\$(__git_ps1)\n$GREEN\u $YELLOW\w$CYAN$BOLD > $RESE
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
-alias ls='ls -Gah'
+alias ls='ls -Gah --color=auto'
 alias beep="echo -ne '\007'"
 alias qemu="qemu-system-x86_64"
 
