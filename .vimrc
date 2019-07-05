@@ -47,6 +47,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'vim-scripts/dbext.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'majutsushi/tagbar'
+Plugin 'rhysd/git-messenger.vim'
 
 call vundle#end()
 
