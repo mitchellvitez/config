@@ -14,7 +14,7 @@ mv config/.* .
 bash config.sh
 ```
 
-If on a mac, set iterm theme (preferences > profiles > colors) to "vital"
+If on a mac, set iterm theme (preferences > profiles > colors) to "vital", and restart for key repeat defaults to take hold
 
 ## Notes
 
