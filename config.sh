@@ -34,6 +34,7 @@ fi
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/soyuka/tmux-current-pane-hostname ~/tmux
 git clone https://github.com/tmux-plugins/tmux-resurrect ~/tmux/resurrect
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 vim +PluginInstall +qall
 rm -rf ~/.git/
